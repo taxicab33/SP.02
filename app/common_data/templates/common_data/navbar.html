@@ -4,8 +4,8 @@
 
       {%if request.user.is_authenticated %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {% navbar_links %}
-        {%for key, value in navbar_links.items %}
+        {% navbar_links as links %}
+        {%for key, value in links.items %}
         <li class="nav-item">
           <a class="nav-link" style="color: black; font-weight: 600" href="{% url key %}">
             {{value}}
