@@ -1,0 +1,11 @@
+.idea
+venv
+*.log
+*.pot
+*.pyc
+__pycache__
+SP.02
+migrations
+static
+media
+images
