@@ -1,0 +1,37 @@
+<h2 class="mb-3">Программное обеспечение оборудования</h2>
+{%if programs %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Название</th>
+      <th scope="col">Версия</th>
+      <th scope="col">Разработчик</th>
+      <th scope="col"> </th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in programs %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{item.program.name}}</td>
+      <td>{{item.program.version}}</td>
+      <td>{{item.program.developer}}</td>
+      <td>
+        <a class="btn btn-primary mx-2" href="{% url 'edit_attached_program' item.pk %}"
+          role="button">Изменить</a>
+        <a class="btn btn-danger mx-2" href="{% url 'delete_attached_program' item.pk %}"
+          role="button">Удалить</a>
+      </td>
+    </tr>
+
+  {% endfor %}
+  </tbody>
+</table>
+{%else%}
+<h3>
+  Данное оборудование не имеет установленного программного обеспечение
+</h3>
+{%endif%}
+<a class="btn btn-primary my-2" href="{% url 'attach_program' equipment_object.pk %}"
+          role="button">Добавить ПО на оборудование</a>

@@ -1,0 +1,35 @@
+{% load navbar_links_tags %}
+<nav class="navbar navbar-expand-lg bg-secondary bg-gradient">
+    <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+
+      {%if request.user.is_authenticated %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% navbar_links %}
+        {%for key, value in navbar_links.items %}
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: 600" href="{% url key %}">
+            {{value}}
+          </a>
+        </li>
+        {%endfor%}
+      </ul>
+
+      <form class="d-flex search">
+        <input class="form-control mx-2" type="search" placeholder="Поиск оборудования"
+               aria-label="Search">
+        <button class="btn btn-primary" type="submit">Поиск</button>
+      </form>
+
+      <div class="d-flex mx-2 logout">
+        <a class="btn btn-primary mx-2" href="{% url 'logout' %}" role="button">Выход</a>
+      </div>
+
+      {%else%}
+      <div class="d-flex mx-2">
+        <a class="btn btn-primary mx-2" href="{% url 'login' %}" role="button">Вход</a>
+        <a class="btn btn-primary mx-2" href="{% url 'signup' %}" role="button">Регистрация</a>
+      </div>
+      {%endif%}
+    </div>
+  </div>
+</nav>

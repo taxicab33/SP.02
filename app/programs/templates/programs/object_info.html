@@ -1,0 +1,26 @@
+{%load static%}
+<div class="row my-5">
+  <div class="m-0 col">
+      <div class="m-5">
+          {% if program_object.image %}
+              <img style="display: block; margin: 0 auto;" width="400" src="{{program_object.image.url}}"
+                   alt="">
+          {% else %}
+              <img style="display: block; margin: 0 auto;" width="400"
+                   src="{% static 'common_data/imgs/no-photo.jpg' %}" alt="">
+          {% endif %}
+      </div>
+  </div>
+  <div class="m-0 col mt-5">
+      <h1 class="mb-2">{{program_object}}</h1>
+      <p>Наименование: {{program_object.name}}</p>
+      <p>Разработчик: {{program_object.name}}</p>
+      <p>Версия: {{program_object.name}}</p>
+      <a class="btn btn-primary my-2"
+         href="{% url 'edit_program' program_object.pk %} "
+         role="button">
+          Изменить
+      </a>
+      <a class="btn btn-danger my-2" href="{% url 'delete_program' program_object.pk %}" role="button">Удалить</a>
+  </div>
+</div>

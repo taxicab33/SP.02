@@ -1,0 +1,11 @@
+../venv
+*.log
+*.pot
+*.pyc
+.idea
+__pycache__
+SP.02
+common_data/migrations
+migrations/!__init__.py
+static
+media

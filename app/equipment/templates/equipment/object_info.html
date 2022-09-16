@@ -1,0 +1,32 @@
+{%load static%}
+<div class="row my-5">
+  <div class="m-0 col">
+      <div class="m-5">
+          {% if equipment_object.image %}
+              <img style="display: block; margin: 0 auto;" width="400" src="{{equipment_object.image.url}}"
+                   alt="">
+          {% else %}
+              <img style="display: block; margin: 0 auto;" width="400"
+                   src="{% static 'common_data/imgs/no-photo.jpg' %}" alt="">
+          {% endif %}
+      </div>
+  </div>
+  <div class="m-0 col mt-5">
+      <h1 class="mb-2">{{equipment_object}}</h1>
+      <p>Наименование: {{equipment_object.name}}</p>
+      <p>Инвентарный номер: {{equipment_object.inventory_number}}</p>
+      <p>Аудитория: {{equipment_object.classroom}}</p>
+      <p>Цена: {{equipment_object.price}} руб.</p>
+      <p>Статус: {{equipment_object.status}}</p>
+      <p>Модель: {{equipment_object.model}}</p>
+      <p>Тип оборудования: {{equipment_object.type}}</p>
+      <p>Отвественный пользователь: {{equipment_object.resp_user}}</p>
+      <p>Временно отвественный пользователь: {{equipment_object.temp_resp_user}}</p>
+      <a class="btn btn-primary my-2"
+         href="{% url 'edit_equipment' equipment_object.pk %} "
+         role="button">
+          Изменить
+      </a>
+      <a class="btn btn-danger my-2" href="{% url 'delete_equipment' equipment_object.pk %}" role="button">Удалить</a>
+  </div>
+</div>

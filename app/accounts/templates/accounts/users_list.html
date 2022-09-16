@@ -1,0 +1,46 @@
+{%extends 'common_data/base.html'%}
+
+{% block content %}
+<div class="container my-5">
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Электронная почта</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Отчество</th>
+      <th scope="col">Дата регистрации</th>
+      <th scope="col">Номер телефона</th>
+      <th scope="col">Адрес</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{user.pk}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.first_name}}</td>
+      <td>{{user.surname}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.date_joined}}</td>
+      <td>{{user.phone_number}}</td>
+      <td>{{user.address}}</td>
+        {%if request.user.is_superuser %}
+      <td>
+        <a class="btn btn-primary mx-2" href="#"
+          role="button">Изменить</a>
+        <a class="btn btn-danger mx-2" href="#"
+          role="button">Удалить</a>
+      </td>
+        {%endif%}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="container mt-3">
+    <a class="btn btn-primary" href="{% url 'create_equipment' %}"
+         role="button">Добавить</a>
+</div>
+<div class="container"  style="background: #edebeb;">
+    {% for equipment_object in equipment %}
+        {%include 'equipment/object_info.html'%}
+    <div class="m-0 col">
+      <a class="btn btn-primary mx-2" href="{% url 'equipment_detail' pk=equipment_object.pk %}"
+         role="button">Подробнее</a>
+    </div>
+        <hr>
+    {% endfor %}
+</div>

@@ -1,0 +1,25 @@
+{% extends 'common_data/base.html' %}
+
+{% block content %}
+<div class="row mx-5 gy-5">
+    <div class="mt-5">
+        <div>
+            {% include 'expendable_materials/object_info.html' %}
+        </div>
+    </div>
+    <div class="row mx-5">
+        <div class="col-6">
+        <h2>Характеристики</h2>
+        <div>
+            {% for item in material_object.get_properties_and_values %}
+            <div>
+                <p>{{item.property.name}}: {{item.value}}</p>
+            </div>
+            {%endfor%}
+        </div>
+         <a class="btn btn-primary my-2" href="#"
+          role="button">Добавить</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

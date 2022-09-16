@@ -1,0 +1,46 @@
+<h2 class="mb-3">Сетевые настройки</h2>
+{%if networks_settings %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Название</th>
+      <th scope="col">IP-адрес</th>
+      <th scope="col">Маска подсети</th>
+      <th scope="col">Главный шлюз</th>
+      <th scope="col">DNS-сервер</th>
+      <th scope="col">Активная</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in networks_settings %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.ip_address}}</td>
+      <td>{{item.mask}}</td>
+      <td>{{item.main_gate}}</td>
+      <td>{{item.dns}}</td>
+      {%if item.active%}
+      <td>Да</td>
+      {%else%}
+      <td>Нет</td>
+      {%endif%}
+      <td>
+        <a class="btn btn-primary mx-2" href="{% url 'edit_setting' item.pk %}"
+          role="button">Изменить</a>
+        <a class="btn btn-danger mx-2" href="{% url 'delete_setting' item.pk %}"
+          role="button">Удалить</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{%else%}
+<h3>
+  Данное оборудование не имеет сетевых настроек
+</h3>
+{%endif%}
+<a class="btn btn-primary my-2" href="{% url 'add_setting' equipment_object.pk %}"
+          role="button">Добавить</a>

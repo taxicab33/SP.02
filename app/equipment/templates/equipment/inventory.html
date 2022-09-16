@@ -1,0 +1,33 @@
+<h2 class="mb-3">Инвентаризации пройденные оборудованием</h2>
+{%if inventory %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Наименование</th>
+      <th scope="col">Дата начала</th>
+      <th scope="col">Дата окончания</th>
+      <th scope="col">Комментарий</th>
+      <th scope="col">Время инвентаризации</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in inventory %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{item.inventory.name}}</td>
+      <td>{{item.inventory.start_date}}</td>
+      <td>{{item.inventory.end_date}}</td>
+      <td>{{item.comment}}</td>
+      <td>{{item.inventory_time}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{%else%}
+<h3>
+  Данное оборудование ниразу не проходило инветаризацию
+</h3>
+{%endif%}
+<a class="btn btn-primary my-2" href="#"
+          role="button">Добавить</a>

@@ -1,0 +1,13 @@
+{% extends 'common_data/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+
+<form action="" method="post">{% csrf_token %}
+    <p>Вы уверены что хотите удалить объект "{{ object }}"?</p>
+    <input class="btn btn-primary my-2" width="50" type="submit" value="Да" />
+<a class="btn btn-primary my-2" href="{% url 'equipment' %}"
+          role="button">Нет</a>
+</form>
+</div>
+{% endblock %}

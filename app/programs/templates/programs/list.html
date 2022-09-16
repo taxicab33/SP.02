@@ -1,0 +1,14 @@
+<div class="container mt-3">
+    <a class="btn btn-primary" href="{% url 'create_program' %}"
+         role="button">Добавить</a>
+</div>
+<div class="container"  style="background: #edebeb;">
+    {% for program_object in programs %}
+        {%include 'programs/object_info.html'%}
+    <div class="m-0 col">
+      <a class="btn btn-primary mx-2" href="{% url 'program_detail' pk=program_object.pk %}"
+         role="button">Подробнее</a>
+    </div>
+        <hr>
+    {% endfor %}
+</div>

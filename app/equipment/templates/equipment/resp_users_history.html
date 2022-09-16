@@ -1,0 +1,28 @@
+<h2 class="mb-3">История передачи отвественности за оборудование между пользователями</h2>
+<p class="mb-3">Текущий отвественный пользователь: {{equipment_object.resp_user}}</p>
+{%if resp_users_history %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Имя отвественного</th>
+      <th scope="col">Время передачи</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in resp_users_history %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{item.resp_user}}</td>
+      <td>{{item.datetime}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{%else%}
+<h3>
+  У данного оборудование ниразу не менялся отвественный
+</h3>
+{%endif%}
+<a class="btn btn-primary my-2" href="{% url 'edit_equipment' equipment_object.pk%}"
+          role="button">Изменить отвественного</a>

@@ -1,0 +1,52 @@
+{% extends 'common_data/base.html' %}
+
+{% block content %}
+<div class="row mx-5 gy-5">
+    <div class="row mt-5">
+        <div class="col-9">
+            {% include 'equipment/object_info.html' %}
+        </div>
+        <div class="col-3 mt-5">
+            <div class="row mt-5">
+                <a class="btn btn-primary my-2" href="#expendable_materials">
+                    Расходные материалы
+                </a>
+                <a class="btn btn-primary my-2" href="#programs">
+                    Программное обеспечение
+                </a>
+                <a class="btn btn-primary my-2" href="#network_settings">
+                    Сетевые настройки
+                </a>
+                <a class="btn btn-primary my-2" href="#inventory">
+                    Пройденная инвентаризация
+                </a>
+                <a class="btn btn-primary my-2" href="#classroom_history">
+                    История передвижения между аудиториями
+                </a>
+                <a class="btn btn-primary my-2" href="#resp_users_history">
+                    История передачи отвественности между пользователями
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div id="expendable_materials">
+        {% include 'equipment/expendable_materials.html' %}
+    </div>
+    <div id="programs">
+        {% include 'equipment/programs.html' %}
+    </div>
+    <div id="network_settings">
+        {% include 'equipment/network_settings.html' %}
+    </div>
+    <div id="inventory">
+        {% include 'equipment/inventory.html' %}
+    </div>
+    <div id="classroom_history">
+        {% include 'equipment/classroom_history.html' %}
+    </div>
+    <div id="resp_users_history">
+        {% include 'equipment/resp_users_history.html' %}
+    </div>
+</div>
+{% endblock %}

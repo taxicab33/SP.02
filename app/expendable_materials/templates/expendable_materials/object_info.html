@@ -1,0 +1,27 @@
+{%load static%}
+<div class="row my-5">
+  <div class="m-0 col">
+      <div class="m-5">
+          {% if material_object.image %}
+              <img style="display: block; margin: 0 auto;" width="400" src="{{material_object.image.url}}"
+                   alt="">
+          {% else %}
+              <img style="display: block; margin: 0 auto;" width="400"
+                   src="{% static 'common_data/imgs/no-photo.jpg' %}" alt="">
+          {% endif %}
+      </div>
+  </div>
+  <div class="m-0 col mt-5">
+      <h1 class="mb-2">{{material_object}}</h1>
+      <p>Наименование: {{material_object.name}}</p>
+      <p>Складской номер: {{material_object.pk}}</p>
+      <p>Описание: {{material_object.description}}</p>
+      <p>Дата поступления: {{material_object.arrive_date}} </p>
+      <p>Кол-во на складе: {{material_object.amount}}</p>
+      <p>Категория: {{material_object.type}}</p>
+      <p>Отвественный пользователь: {{material_object.resp_user}}</p>
+      <p>Временно отвественный пользователь: {{material_object.temp_resp_user}}</p>
+      <a class="btn btn-primary my-2" href="{% url 'edit_material' material_object.pk %}" role="button">Изменить</a>
+      <a class="btn btn-danger my-2" href="{% url 'delete_material' material_object.pk %}" role="button">Удалить</a>
+  </div>
+</div>

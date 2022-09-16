@@ -1,0 +1,28 @@
+<h2 class="mb-3">История передвижения между аудиториями</h2>
+<p class="mb-3">Текущая аудитория: {{equipment_object.classroom}}</p>
+{%if classrooms_history %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Аудитория</th>
+      <th scope="col">Время перемещения</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in classrooms_history %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{item.classroom}}</td>
+      <td>{{item.datetime}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{%else%}
+<h3>
+  Данное оборудование ниразу не меняло своего местоположения
+</h3>
+{%endif%}
+<a class="btn btn-primary my-2" href="{% url 'edit_equipment' equipment_object.pk%}"
+          role="button">Изменить аудиторию</a>

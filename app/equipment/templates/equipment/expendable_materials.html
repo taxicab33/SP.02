@@ -1,0 +1,54 @@
+<h2 class="mb-3">Расходные материалы</h2>
+{%if expendable_materials %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Складской номер</th>
+      <th scope="col">Название</th>
+      <th scope="col">Описание</th>
+      <th scope="col">Дата поступления</th>
+      <th scope="col">Изображение</th>
+      <th scope="col">Кол-во прикрепленное к оборудованию</th>
+      <th scope="col">Кол-во на складе</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in expendable_materials %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{item.material.pk}}</td>
+      <td>{{item.material.name}}</td>
+      <td>{{item.material.description}}</td>
+      <td>{{item.material.arrive_date}}</td>
+      {% if item.material.image %}
+      <td>
+        <img width="200" src="{{item.material.image.url}}" alt="">
+      </td>
+      {% else %}
+      <td>Изображение отсутствует</td>
+      {%endif%}
+      <td>
+        {{item.amount}}
+        <a class=" mx-2" href="{%url 'edit_attached_material' item.pk%}"
+          role="button">Изменить</a>
+      </td>
+      <td>{{item.material.amount}}</td>
+      <td>
+        <a class="btn btn-primary mx-2" href="{% url 'material_detail' item.material.pk %}"
+          role="button">Подробнее</a>
+        <a class="btn btn-danger mx-2" href="{% url 'delete_attached_material' item.pk %}"
+          role="button">Открепить</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{%else%}
+<h3>
+  Расходные материалы, прикрепленные к данному оборудованию отсутствуют.
+</h3>
+{%endif%}
+  <a class="btn btn-primary my-2" href="{% url 'attach_material' equipment_object.pk%}"
+          role="button">Добавить</a>
